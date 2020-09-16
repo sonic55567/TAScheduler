@@ -1,0 +1,47 @@
+
+
+
+<style type="text/css">
+.upload_wrap {
+  display: inline-block;
+  position: relative;
+  width: 94px;
+  padding: 3px 5px;
+  overflow: hidden;
+}
+
+.file_uploader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  outline: none;
+  opacity: 0;
+  background-color: transparent;
+}
+
+.upload_text {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.upload_tip {
+  display: inline-block;
+  margin-left: 10px;
+  color: #999;
+}
+</style>
+
+
+
+
+<Button className={Styles.upload_wrap}>
+    匯入TA表
+    <input className={Styles.file_uploader} type='file' accept='.xlsx, .xls' onChange={this.onImportExcel} /> 
+</Button>
+<br></br>
+<Button className={Styles.upload_wrap}>
+    匯入課程表
+    <input className={Styles.file_uploader} type='file' accept='.xlsx, .xls' onChange={this.onImportExcel} /> 
+</Button>
