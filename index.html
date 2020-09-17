@@ -5,13 +5,21 @@
 <script src="src/input.js" type="text/javascript" charset="utf-8"></script>
 <script src="src/output.js" type="text/javascript" charset="utf-8"></script>
 <script>
+  // declare variables
   var TAJson;
   var classJson
   var sheet;
   var key1;
   var key2;
   var TAArray = [[],[]];
-  var classArray = [[],[]];
+  var classArray = [[],[],[]];
+  var TATimeArray = [];
+  var classTimeArray = [];
+  var outputData = [
+    /*
+    ["名字", "節次", "可配對課程名稱", "課程節次"],
+    */
+  ];
 </script>
 
 
@@ -38,10 +46,10 @@
 </script>
 
 <input id="match" value="配對" type="button" onClick="test();">
-<script>
-  console.log('helloworld');
-  
-</script>
+
+<br><br/>
+
+<pre id="showMessage"></pre>
 
 <br><br/><br><br/><br><br/><br><br/><br><br/>
 <input type="file" id="upload_input" />
@@ -52,4 +60,4 @@
     <h4>show csv</h4>
     <pre id="upload_showcsv"></pre>
 
-    <button id="download_button">下載測試檔案</button>
+<button id="download_button">下載檔案</button>

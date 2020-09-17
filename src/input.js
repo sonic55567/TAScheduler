@@ -91,8 +91,9 @@ $(document).ready(function () {
             classJson = retjson;
             reformatClass(retjson);
             //顯示內容
-            $('#upload_showjson').html(JSON.stringify(retjson, null, '\t'));
-            $('#upload_showcsv').html(retcsv);
+            //$('#upload_showjson').html(JSON.stringify(retjson, null, '\t'));
+            //$('#upload_showcsv').html(retcsv);
+            
 
         };
 
@@ -102,9 +103,13 @@ $(document).ready(function () {
     });
 
     $('#match').on('click', function () {
-        console.log(TAArray);
+        /*console.log(TAArray);
         console.log(classArray);
+        console.log(TATimeArray);
+        console.log(classTimeArray);*/
         parseTime();
+        outputFile();
+        $('#showMessage').html("檔案已可下載！");
     });
 
     //綁定click事件，下載xlsx檔
@@ -112,10 +117,10 @@ $(document).ready(function () {
 
         console.log("asd");
         //檔名
-        var filename = 'download.xlsx';
+        var filename = 'downloadTest.xlsx';
 
         //表名
-        var sheetname = 'test';
+        var sheetname = 'sheet1';
 
         //測試資料
         var data = [
@@ -125,7 +130,7 @@ $(document).ready(function () {
         ];
 
         //下載
-        downloadxlsx(filename, sheetname, data);
+        downloadxlsx(filename, sheetname, outputData);
 
 
     })
