@@ -103,7 +103,6 @@ $(document).ready(function () {
     //綁定click事件，下載xlsx檔
     $('#download_button').on('click', function () {
 
-        console.log("asd");
         //檔名
         var filename = 'downloadTest.xlsx';
 

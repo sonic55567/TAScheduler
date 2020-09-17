@@ -61,12 +61,10 @@ function parseTime() {
 
         // cut base on ","
         cut = str.split(",");
-        console.log(cut);
         timeArray = cut;
 
         // parse time string
         for(i in timeArray) {
-            console.log(timeArray[i]);
             // 只有一節
             if(timeArray[i].length == 4) { 
                 var weekDay = parseInt(timeArray[i].charAt(1), 10);
@@ -74,10 +72,7 @@ function parseTime() {
                 var time2 = timeTable[timeArray[i].charAt(3)];
                 for(j=time1+(16*(weekDay-1));j<=time2+(16*(weekDay-1));j++) {
                     classTimeArray[count][j] = 1;
-                    console.log("add!");
                 }
-
-                console.log("one!");
             }
             else if(timeArray[i].charAt(0) == "[" && timeArray[i].charAt(2) == "]" && timeArray[i].charAt(4) == "-") {
                 var weekDay = parseInt(timeArray[i].charAt(1), 10);
@@ -85,7 +80,6 @@ function parseTime() {
                 var time2 = timeTable[timeArray[i].charAt(5)];
                 for(j=time1+(16*(weekDay-1));j<=time2+(16*(weekDay-1));j++) {
                     TATimeArray[count][j] = 1;
-                    console.log("add!");
                 }
             }
             // wrong format
@@ -108,12 +102,10 @@ function parseTime() {
 
         // cut base on ","
         cut = str.split(",");
-        console.log(cut);
         timeArray = cut;
 
         // parse time string
         for(i in timeArray) {
-            console.log(timeArray[i]);
             // 只有一節
             if(timeArray[i].length == 4) { 
                 var weekDay = parseInt(timeArray[i].charAt(1), 10);
@@ -161,12 +153,6 @@ function outputFile() {
     outputData[0].push("可配對課程名稱");
     outputData[0].push("課程節次");
     //outputData.push(new Array());
-    console.log(TATimeArray.length);
-    console.log(TATimeArray[0]);
-    if(isWorkable(TATimeArray[0], classTimeArray[2])) {
-        console.log("c c ");
-    }
-    console.log(TATimeArray[0]);
     for(i=0;i<TATimeArray.length;i++) {
         // output TA's info
         outputData.push([]);
@@ -177,16 +163,19 @@ function outputFile() {
         // search candidates
         
         for(j=0;j<classTimeArray.length;j++) {
-            console.log("here");
-            console.log(i);
-            console.log(j);
             if(isWorkable(TATimeArray[i], classTimeArray[j])) {
-                console.log("in if");
                 outputData[parseInt(i)+1].push(classArray[0][parseInt(j)]);
                 outputData[parseInt(i)+1].push(classArray[1][parseInt(j)]);
             }
         }
+        /*
+        var text = document.getElementById("progress");
+        var all = TATimeArray.length*classTimeArray.length;
+        var bar = (i+1)*(j+1)/all;
+        text.innerHTML = bar+"%";
+        console.log(bar);
+        */
     }
 
-    alert("檔案已可下載！")
+    alert("完成！")
 }
