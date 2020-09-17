@@ -57,10 +57,6 @@ $(document).ready(function () {
             TAJson = retjson;
             reformatTA(retjson);
 
-            //顯示內容
-            $('#upload_showjson').html(JSON.stringify(retjson, null, '\t'));
-            $('#upload_showcsv').html(retcsv);
-
         };
 
         //以BinaryString讀入
@@ -90,11 +86,7 @@ $(document).ready(function () {
             var retcsv = readxlsx(data, 'csv');
             classJson = retjson;
             reformatClass(retjson);
-            //顯示內容
-            //$('#upload_showjson').html(JSON.stringify(retjson, null, '\t'));
-            //$('#upload_showcsv').html(retcsv);
             
-
         };
 
         //以BinaryString讀入
@@ -103,10 +95,6 @@ $(document).ready(function () {
     });
 
     $('#match').on('click', function () {
-        /*console.log(TAArray);
-        console.log(classArray);
-        console.log(TATimeArray);
-        console.log(classTimeArray);*/
         parseTime();
         outputFile();
         $('#showMessage').html("檔案已可下載！");

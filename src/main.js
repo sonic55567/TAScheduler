@@ -119,7 +119,7 @@ function parseTime() {
                 var weekDay = parseInt(timeArray[i].charAt(1), 10);
                 var time1 = timeTable[timeArray[i].charAt(3)];
                 var time2 = timeTable[timeArray[i].charAt(3)];
-                for(j=time1+(16*(weekDay-1))-1;j<=time2+(16*(weekDay-1))+1;j++) {
+                for(j=time1+(16*(weekDay-1))-0;j<=time2+(16*(weekDay-1))+0;j++) {
                     classTimeArray[count][j] = 1;
                 }
             }
@@ -127,7 +127,7 @@ function parseTime() {
                 var weekDay = parseInt(timeArray[i].charAt(1), 10);
                 var time1 = timeTable[timeArray[i].charAt(3)];
                 var time2 = timeTable[timeArray[i].charAt(5)];
-                for(j=time1+(16*(weekDay-1))-1;j<=time2+(16*(weekDay-1))+1;j++) {
+                for(j=time1+(16*(weekDay-1))-0;j<=time2+(16*(weekDay-1))+0;j++) {
                     classTimeArray[count][j] = 1;
                 }
             }
@@ -187,4 +187,6 @@ function outputFile() {
             }
         }
     }
+
+    alert("檔案已可下載！")
 }
