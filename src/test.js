@@ -7,7 +7,7 @@ function TACount() {
     return n;
 }
 
-var str = "[1]1-8,[3]1-8,[4]1-8,[5]1-8";
+var str = "[1]1~8,[3]1-8,[4]1-8,[5]1-8";
 // 建一個dict對應節數
 var timeTable = {
     "0" : 0,
@@ -77,7 +77,7 @@ for(i in timeArray) {
             arr[j] = 1;
         }
     }
-    else if(timeArray[i].charAt(0) == "[" && timeArray[i].charAt(2) == "]" && timeArray[i].charAt(4) == "-") {
+    else if(timeArray[i].charAt(0) == "[" && timeArray[i].charAt(2) == "]" && (timeArray[i].charAt(4) == "-" || timeArray[i].charAt(4) == "~")) {
         var weekDay = parseInt(timeArray[i].charAt(1), 10);
         var time1 = timeTable[timeArray[i].charAt(3)];
         var time2 = timeTable[timeArray[i].charAt(5)];

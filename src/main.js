@@ -112,7 +112,7 @@ function parseTime() {
                     classTimeArray[count][j] = 1;
                 }
             }
-            else if(timeArray[i].charAt(0) == "[" && timeArray[i].charAt(2) == "]" && timeArray[i].charAt(4) == "-") {
+            else if(timeArray[i].charAt(0) == "[" && timeArray[i].charAt(2) == "]" && (timeArray[i].charAt(4) == "-" || timeArray[i].charAt(4) == "~")) {
                 var weekDay = parseInt(timeArray[i].charAt(1), 10);
                 var time1 = timeTable[timeArray[i].charAt(3)];
                 var time2 = timeTable[timeArray[i].charAt(5)];
@@ -167,7 +167,7 @@ function parseTime() {
                     classTimeArray[count][j] = 1;
                 }
             }
-            else if(timeArray[i].charAt(0) == "[" && timeArray[i].charAt(2) == "]" && timeArray[i].charAt(4) == "-") {
+            else if(timeArray[i].charAt(0) == "[" && timeArray[i].charAt(2) == "]" && (timeArray[i].charAt(4) == "-" || timeArray[i].charAt(4) == "~")) {
                 var weekDay = parseInt(timeArray[i].charAt(1), 10);
                 var time1 = timeTable[timeArray[i].charAt(3)];
                 var time2 = timeTable[timeArray[i].charAt(5)];
