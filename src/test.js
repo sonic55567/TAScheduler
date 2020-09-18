@@ -120,3 +120,20 @@ function isWorkable(a, b) {
     return true;
 }
 
+
+for(i=0;i<10;i=i+2) {
+    console.log(i);
+}
+arr = [5,4,3,5,7,1,8];
+console.log(arr);
+for(j=arr.length-1;j>1;j--) {
+    for(i=0;i<j;i++) {
+        if(arr[i]>arr[i+1]) {
+            temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
+        }
+    }
+}
+
+console.log(arr);

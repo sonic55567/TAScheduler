@@ -20,12 +20,50 @@ function reformatClass(data) {
             classTimeArray[i][j] = 0;
         }
     }
+
+    sortClassTime();
 }
 
 function test() {
     if(!TAFile.files[0] || !classFile.files[0]) {
         alert("請先選取檔案");
         return;
+    }
+}
+
+function sortClassTime() {
+    for(i=0;i<classArray[0].length;i++) {
+        if(i==0){
+            console.log(classArray[1][i]);
+            console.log(classArray[1][i].charAt(1));
+            console.log(classArray[1][i].charAt(3));
+        }
+        weekDay = classArray[1][i].charAt(1);
+        time1 = classArray[1][i].charAt(3);
+        classArray[2].push(parseInt((parseInt(weekDay)-1)*7)+parseInt(time1));
+        if(i==0){
+            console.log(classArray[1][i]);
+            console.log(classArray[1][i].charAt(1));
+            console.log(classArray[1][i].charAt(3));
+            console.log(classArray[2][i]);
+        }
+    }
+    for(i=classArray[0].length-1;i>1;i--) {
+        for(j=0;j<i;j++) {
+            if(classArray[2][j]>classArray[2][j+1]) {
+                temp = classArray[0][j];
+                classArray[0][j] = classArray[0][j+1];
+                classArray[0][j+1] = temp;
+
+                temp = classArray[1][j];
+                classArray[1][j] = classArray[1][j+1];
+                classArray[1][j+1] = temp;
+
+                temp = classArray[2][j];
+                classArray[2][j] = classArray[2][j+1];
+                classArray[2][j+1] = temp;
+            }
+        }
     }
 }
 
@@ -249,4 +287,37 @@ function outputFile() {
     alert("完成！")
 }
 
+
+function classToTA() {
+    outputClassToTA.push(new Array());
+    outputClassToTA[0].push("課程名稱");
+    outputClassToTA[0].push("節次");
+    outputClassToTA[0].push("可配對TA");
+
+    i=1;
+    x=1;
+    while(true) {
+        for(j=2;j<outputData[i].length;j=j+2) {
+            outputClassToTA.push([]);
+            outputClassToTA[x].push(outputData[i][j]);
+            outputClassToTA[x].push(outputData[i][j+1]);
+            outputClassToTA[x].push(outputData[i][0]);
+            x++;
+        }
+        
+        if(outputData[i][0] == "無法配對") {
+            for(;i<outputData.length;i++) {
+                outputClassToTA.push([]);
+                outputClassToTA.push([]);
+                x++;
+                for(j=0;j<outputData[i].length;j=j+2) {
+                    outputClassToTA[x].push(outputData[i][j]);
+                    outputClassToTA[x].push(outputData[i][j+1]);
+                }
+            }
+            break;
+        }
+        i = i+1;
+    }
+}
 

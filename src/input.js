@@ -97,6 +97,7 @@ $(document).ready(function () {
     $('#match').on('click', function () {
         parseTime();
         outputFile();
+        classToTA();
         $('#showMessage').html("檔案已可下載！");
     });
 
@@ -118,6 +119,28 @@ $(document).ready(function () {
 
         //下載
         downloadxlsx(filename, sheetname, outputData);
+
+
+    })
+
+    // class to TA
+    $('#download_button2').on('click', function () {
+
+        //檔名
+        var filename = 'download.xlsx';
+
+        //表名
+        var sheetname = 'sheet1';
+
+        //測試資料
+        var data = [
+            ['name', 'number', 'date'],
+            ['abc', 1, new Date().toLocaleString()],
+            ['def', 123.456, new Date('2015-03-25T13:30:12Z')],
+        ];
+
+        //下載
+        downloadxlsx(filename, sheetname, outputClassToTA);
 
 
     })
