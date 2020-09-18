@@ -176,8 +176,9 @@ function isWorkable(a, b) {
 
 function TACount(id) {
     n=0;
-    for(Index=0;Index<TATimeArray.length;Index++) {
-        n = n+1;
+    for(Index=0;Index<TATimeArray[id].length;Index++) {
+        if(TATimeArray[id][Index] == 1)
+            n = n+1;
     }
     return n;
 }
@@ -216,7 +217,7 @@ function outputFile() {
         for(i=0;i<TATimeArray.length;i++) {
             if(isWorkable(TATimeArray[i], classTimeArray[j])) {
                 if(TACount(i)>max) {
-                    max = TACount(i)
+                    max = TACount(i);
                     maxId = i;
                 }
                 

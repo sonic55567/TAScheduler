@@ -1,4 +1,13 @@
-var str = "[ 2 ]3-4 , [4] 2";
+function TACount() {
+    n=0;
+    for(Index=0;Index<arr.length;Index++) {
+        if(arr[Index] == 1)
+            n = n+1;
+    }
+    return n;
+}
+
+var str = "[1]1-8,[3]1-8,[4]1-8,[5]1-8";
 // 建一個dict對應節數
 var timeTable = {
     "0" : 0,
@@ -97,6 +106,7 @@ for(i in timeArray) {
     }
 }
 //console.log(arr);
+console.log(TACount(arr));
 
 function isWorkable(a, b) {
     // a : TA ; b : class
