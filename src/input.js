@@ -104,7 +104,7 @@ $(document).ready(function () {
     $('#download_button').on('click', function () {
 
         //檔名
-        var filename = 'downloadTest.xlsx';
+        var filename = 'download.xlsx';
 
         //表名
         var sheetname = 'sheet1';

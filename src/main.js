@@ -111,7 +111,21 @@ function parseTime() {
                 var weekDay = parseInt(timeArray[i].charAt(1), 10);
                 var time1 = timeTable[timeArray[i].charAt(3)];
                 var time2 = timeTable[timeArray[i].charAt(3)];
-                for(j=time1+(16*(weekDay-1))-0;j<=time2+(16*(weekDay-1))+0;j++) {
+                // exception
+                if(time1 == 0 || time1 == 1 || time1 == 5 || time1 == 6) {
+                    time1 = time1+(16*(weekDay-1))-0;
+                }
+                else {
+                    time1 = time1+(16*(weekDay-1))-1;
+                }
+                if(time2 == 4 || time2 == 9 || time2 == 10 || time2 == 11 || time2 == 12 || time2 == 13 || time2 == 14 || time2 == 15) {
+                    time2 = time2+(16*(weekDay-1))+0;
+                }
+                else {
+                    time2 = time2+(16*(weekDay-1))+1;
+                }
+                ////////////
+                for(j=time1;j<=time2;j++) {
                     classTimeArray[count][j] = 1;
                 }
             }
@@ -119,7 +133,21 @@ function parseTime() {
                 var weekDay = parseInt(timeArray[i].charAt(1), 10);
                 var time1 = timeTable[timeArray[i].charAt(3)];
                 var time2 = timeTable[timeArray[i].charAt(5)];
-                for(j=time1+(16*(weekDay-1))-0;j<=time2+(16*(weekDay-1))+0;j++) {
+                // exception
+                if(time1 == 0 || time1 == 1 || time1 == 5 || time1 == 6) {
+                    time1 = time1+(16*(weekDay-1))-0;
+                }
+                else {
+                    time1 = time1+(16*(weekDay-1))-1;
+                }
+                if(time2 == 4 || time2 == 9 || time2 == 10 || time2 == 11 || time2 == 12 || time2 == 13 || time2 == 14 || time2 == 15) {
+                    time2 = time2+(16*(weekDay-1))+0;
+                }
+                else {
+                    time2 = time2+(16*(weekDay-1))+1;
+                }
+                ////////////
+                for(j=time1;j<=time2;j++) {
                     classTimeArray[count][j] = 1;
                 }
             }
@@ -146,6 +174,14 @@ function isWorkable(a, b) {
     return true;
 }
 
+function TACount(id) {
+    n=0;
+    for(Index=0;Index<TATimeArray.length;Index++) {
+        n = n+1;
+    }
+    return n;
+}
+
 function outputFile() {
     outputData.push(new Array());
     outputData[0].push("名字");
@@ -162,12 +198,6 @@ function outputFile() {
         
         // search candidates
         
-        for(j=0;j<classTimeArray.length;j++) {
-            if(isWorkable(TATimeArray[i], classTimeArray[j])) {
-                outputData[parseInt(i)+1].push(classArray[0][parseInt(j)]);
-                outputData[parseInt(i)+1].push(classArray[1][parseInt(j)]);
-            }
-        }
         /*
         var text = document.getElementById("progress");
         var all = TATimeArray.length*classTimeArray.length;
@@ -176,6 +206,46 @@ function outputFile() {
         console.log(bar);
         */
     }
-
+    outputData.push([]);
+    outputData[parseInt(i)+1].push("無法配對");
+    var cannotMatchIndex = i+2;
+    // output
+    console.log(TATimeArray[0]);
+    for(j=0;j<classTimeArray.length;j++) {
+        var max=-1, maxId=-1;
+        for(i=0;i<TATimeArray.length;i++) {
+            if(isWorkable(TATimeArray[i], classTimeArray[j])) {
+                if(TACount(i)>max) {
+                    max = TACount(i)
+                    maxId = i;
+                }
+                
+                //outputData[parseInt(i)+1].push(classArray[0][parseInt(j)]);
+                //outputData[parseInt(i)+1].push(classArray[1][parseInt(j)]);
+            }
+        }
+        if(max != -1 && maxId != -1) {
+            outputData[parseInt(maxId)+1].push(classArray[0][parseInt(j)]);
+            outputData[parseInt(maxId)+1].push(classArray[1][parseInt(j)]);
+            // eliminate this time
+            for(ii=0;ii<=112;ii++) {
+                if(classTimeArray[j][ii] == 1) {
+                    console.log("123");
+                    TATimeArray[maxId][ii] = 0;
+                }
+            }
+        }
+        // there is no TA can support this class
+        else {
+            outputData.push([]);
+            outputData[cannotMatchIndex].push(classArray[0][parseInt(j)]);
+            outputData[cannotMatchIndex].push(classArray[1][parseInt(j)]);
+            cannotMatchIndex++;
+        }
+        
+    }
+    console.log(TATimeArray[0]);
     alert("完成！")
 }
+
+

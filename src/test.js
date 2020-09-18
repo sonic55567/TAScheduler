@@ -1,4 +1,4 @@
-var str = "[ 4 ]1-2 , [3] 2- A";
+var str = "[ 2 ]3-4 , [4] 2";
 // 建一個dict對應節數
 var timeTable = {
     "0" : 0,
@@ -41,16 +41,54 @@ timeArray = cut;
 // parse time string
 for(i in timeArray) {
     console.log(timeArray[i]);
-    if(timeArray[i].charAt(0) == "[" && timeArray[i].charAt(2) == "]" && timeArray[i].charAt(4) == "-") {
+    if(timeArray[i].length == 4) {
+        var weekDay = parseInt(timeArray[i].charAt(1), 10);
+        var time1 = timeTable[timeArray[i].charAt(3)];
+        var time2 = timeTable[timeArray[i].charAt(3)];
+        // exception
+        console.log(time1);
+        console.log(time2);
+        if(time1 == 1 || time1 == 6) {
+            time1 = time1+(16*(weekDay-1))-0;
+        }
+        else {
+            time1 = time1+(16*(weekDay-1))-1;
+        }
+        if(time2 == 4 || time2 == 9 || time2 == 10 || time2 == 11 || time2 == 12 || time2 == 13 || time2 == 14 || time2 == 15) {
+            time2 = time2+(16*(weekDay-1))+0;
+        }
+        else {
+            time2 = time2+(16*(weekDay-1))+1;
+        }
+        ////////////
+        console.log(time1);
+        console.log(time2);
+        for(j=time1;j<=time2;j++) {
+            console.log("add");
+            arr[j] = 1;
+        }
+    }
+    else if(timeArray[i].charAt(0) == "[" && timeArray[i].charAt(2) == "]" && timeArray[i].charAt(4) == "-") {
         var weekDay = parseInt(timeArray[i].charAt(1), 10);
         var time1 = timeTable[timeArray[i].charAt(3)];
         var time2 = timeTable[timeArray[i].charAt(5)];
-        console.log(time1);
-        console.log(time2);
 
-        for(j=time1+(16*(weekDay-1));j<=time2+(16*(weekDay-1));j++) {
+        // exception
+        if(time1 == 1 || time1 == 6) {
+            time1 = time1+(16*(weekDay-1))-0;
+        }
+        else {
+            time1 = time1+(16*(weekDay-1))-1;
+        }
+        if(time2 == 4 || time2 == 9 || time2 == 10 || time2 == 11 || time2 == 12 || time2 == 13 || time2 == 14 || time2 == 15) {
+            time2 = time2+(16*(weekDay-1))+0;
+        }
+        else {
+            time2 = time2+(16*(weekDay-1))+1;
+        }
+        ////////////
+        for(j=time1;j<=time2;j++) {
             arr[j] = 1;
-            console.log("add!");
         }
     }
     // wrong format
@@ -58,10 +96,7 @@ for(i in timeArray) {
         alert("節次格式錯誤");
     }
 }
-for (i in arr) {
-    console.log(i + ":");
-    console.log(arr[i]);
-}
+//console.log(arr);
 
 function isWorkable(a, b) {
     // a : TA ; b : class
@@ -75,16 +110,3 @@ function isWorkable(a, b) {
     return true;
 }
 
-console.log("helloworld");
-stt = "helloworld";
-console.log(stt.charAt(2));
-stt[2] = 'a'
-console.log(stt);
-
-sss = [0,0,0,1,1,1,0,0,0,0];
-aaa = [0,0,1,1,1,0,0,0,0,0];
-console.log(sss);
-console.log(aaa);
-console.log(isWorkable(sss,aaa));
-console.log(sss);
-console.log(aaa);
