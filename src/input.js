@@ -105,7 +105,7 @@ $(document).ready(function () {
     $('#download_button').on('click', function () {
 
         //檔名
-        var filename = 'download.xlsx';
+        var filename = 'TA_to_Class.xlsx';
 
         //表名
         var sheetname = 'sheet1';
@@ -127,7 +127,7 @@ $(document).ready(function () {
     $('#download_button2').on('click', function () {
 
         //檔名
-        var filename = 'download.xlsx';
+        var filename = 'Class_to_TA.xlsx';
 
         //表名
         var sheetname = 'sheet1';
