@@ -96,9 +96,6 @@ $(document).ready(function () {
 
     $('#match').on('click', function () {
         parseTime();
-        outputFile();
-        classToTA();
-        $('#showMessage').html("檔案已可下載！");
     });
 
     //綁定click事件，下載xlsx檔

@@ -25,10 +25,7 @@ function reformatClass(data) {
 }
 
 function test() {
-    if(!TAFile.files[0] || !classFile.files[0]) {
-        alert("請先選取檔案");
-        return;
-    }
+    
 }
 
 function sortClassTime() {
@@ -87,6 +84,12 @@ function parseTime() {
         "D" : 14,
         "E" : 15
     }
+
+    if(!TAFile.files[0] || !classFile.files[0]) {
+        alert("請先選取檔案");
+        return;
+    }
+
     // It's TA Time!!
     for(count in TAArray[1]) {
         str = TAArray[1][count]
@@ -197,6 +200,9 @@ function parseTime() {
             }
         }
     }
+    outputFile();
+    classToTA();
+    $('#showMessage').html("檔案已可下載！");
     
 }
 
