@@ -21,31 +21,38 @@ function reformatClass(data) {
         }
     }
 
+    for(i=0;i<2;i++){
+        console.log(classArray[0][i]);
+        console.log(classArray[1][i]);
+        console.log(classArray[2][i]);
+    }
+    console.log("/////////////");
+
     sortClassTime();
+
+    for(i=0;i<2;i++){
+        console.log(classArray[0][i]);
+        console.log(classArray[1][i]);
+        console.log(classArray[2][i]);
+    }
 }
 
-function test() {
-    
-}
+function test(){}
 
 function sortClassTime() {
     for(i=0;i<classArray[0].length;i++) {
-        if(i==0){
-            console.log(classArray[1][i]);
-            console.log(classArray[1][i].charAt(1));
-            console.log(classArray[1][i].charAt(3));
-        }
+
         weekDay = classArray[1][i].charAt(1);
         time1 = classArray[1][i].charAt(3);
         classArray[2].push(parseInt((parseInt(weekDay)-1)*7)+parseInt(time1));
-        if(i==0){
+        /*if(i==0){
             console.log(classArray[1][i]);
             console.log(classArray[1][i].charAt(1));
             console.log(classArray[1][i].charAt(3));
             console.log(classArray[2][i]);
-        }
+        }*/
     }
-    for(i=classArray[0].length-1;i>1;i--) {
+    for(i=classArray[0].length-1;i>0;i--) {
         for(j=0;j<i;j++) {
             if(classArray[2][j]>classArray[2][j+1]) {
                 temp = classArray[0][j];
@@ -125,7 +132,7 @@ function parseTime() {
             }
             // wrong format
             else {
-                alert("TA班表格式錯誤, 第" + count + "筆資料");
+                alert("TA班表格式錯誤, 第" + count+2 + "筆資料");
                 break;
             }
         }
@@ -195,7 +202,7 @@ function parseTime() {
             
             // wrong format
             else {
-                alert("課程班表格式錯誤, 第" + count + "筆資料");
+                alert("課程班表格式錯誤, 第" + count+2 + "筆資料");
                 break;
             }
         }
